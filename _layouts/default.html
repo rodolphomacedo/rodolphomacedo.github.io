@@ -12,6 +12,7 @@
     <script src="{{ '/assets/js/modernizr.js' | relative_url }}"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <script src="{{ '/assets/js/headsmart.min.js' | relative_url }}"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script>
       $(document).ready(function () {
         $('#main_content').headsmart()
@@ -39,7 +40,11 @@
       {% if site.show_downloads %}
         <section id="downloads">
           <span class="inner">
-              <a href="{{ site.github.zip_url }}" class="zip"><em>Técnicas</em>M.L.</a><a href="{{ site.github.tar_url }}" class="tgz"><em>Modelos</em>M.L.</a>
+              <!--a href="{{ site.github.zip_url }}" class="zip"><em>M.L.</em>Técnicas</a-->
+              <a href="" class="zip"><em>M.L.</em>Técnicas</a>
+              <br />
+              <!--a href="{{ site.github.tar_url }}" class="tgz"><em>M.L.</em>Modelos</a-->
+              <a href="" class="tgz"><em>M.L.</em>Modelos</a>
           </span>
         </section>
       {% else %}
