@@ -5,6 +5,8 @@ ON
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 
 [Link to another page](./another-page.html).
+[Reinforcement Learning](./rl/introduction.html).
+[Contruindo um computador](./n2t/introduction.html).
 
 There should be whitespace between paragraphs.
 
