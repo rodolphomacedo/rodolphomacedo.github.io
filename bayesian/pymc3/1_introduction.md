@@ -29,7 +29,7 @@ método da classe `Normal`.
 
 A variável requer ao menos um `name` como argumento de sua assinatura, 
 e cada função de probabilidade tem seus devidos parâmetros próprios,
-como no caso da Normal temos os parâmetros `mu` ($$`\mu`$$) e `sigma` ($$`\sigma`$$).
+como no caso da Normal temos os parâmetros `mu` ($$\mu$$) e `sigma` ($$\sigma$$).
 
 No quadro anterior criamos uma variável aleatória escalar. Para criarmos uma 
 variável aleatória vetorial precisamos definir a sua *forma* (`shape`):
@@ -46,7 +46,7 @@ $$
 
 No PyMC3 todas as distribuições de probabilidades são subclasses da Classe `Distribuition`, 
 o qual por sua vez tem duas subclasses `Discrete` e `Continuous`, que são
-variáveis definidas em **Theano** (o PyMC4 está sendo reconstruído utilizando o TensorFlow 
+variáveis definidas em **Theano** (o PyMC4 está sendo reconstruído utilizando o **TensorFlow** 
 como Backend).
 
 
@@ -138,5 +138,26 @@ e este é o espaço sobre o qual a amostragem ocorre.
 Por padrão, as variáveis transformadas automaticamente são ignoradas 
 ao imprimir e plotar a saída do modelo.
 
-*Referências:* [Documentação](https://docs.pymc.io/Probability_Distributions.html)
+Com a representação das probabilidades desse modo nos trás muitas vantagens práticas:
 
+
+* **Rapidez**. Como a multiplicação é mais cara do que a adição, o uso de um número 
+alto de probabilidades geralmente é mais rápido se elas estiverem representadas na 
+forma de log. 
+(A conversão para log é cara, mas ocorre apenas uma vez.) 
+A multiplicação surge do cálculo da probabilidade de ocorrência de vários eventos 
+independentes: a probabilidade de ocorrência de todos os eventos 
+independentes de interesse é o produto de todas as probabilidades desses eventos.
+
+* **Precisão Numerica**. O uso de probabilidades de log melhora a estabilidade numérica,
+ quando as probabilidades são muito pequenas, devido à maneira como os 
+computadores aproximam números reais (*float*).
+
+* **Simplicidade**. Muitas distribuições de probabilidade têm uma forma exponencial. 
+O registro dessas distribuições elimina a função exponencial.
+
+
+*Referências:* 
+[Documentação PyMC3](https://docs.pymc.io/Probability_Distributions.html)
+[Log Probabilidade](https://en.wikipedia.org/wiki/Log_probability)
+[Suporte](https://en.wikipedia.org/wiki/Support_(mathematics))
