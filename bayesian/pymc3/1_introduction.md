@@ -38,133 +38,87 @@ with pm.Model():
     y = pm.Beta('p', 1, 1, shape=(3, 3))
 ``` 
 
-Acabamos de definir  $y \approx Beta(1,1) , y \in \R^{3} $
+Acimas acabamos de descrever $y \approx Beta(1,1) , y \in \R^{3} $.
+
+No PyMC3 todas as distribuições de probabilidades são subclasses da Classe `Distribuition`, 
+o qual por sua vez tem duas subclasses `Discrete` e `Continuous`, que são
+variáveis definidas em **Theano** (o PyMC4 está sendo reconstruído utilizando o TensorFlow 
+como Backend).
 
 
+Todas as distribuições de probabilidade em PyMC3 (`pm.Distribution`) contém dois 
+importantes métodos: `random()` e `log()`:
 
-===============================================================================+
 
+Os métodos acima também são utilizados internamente pelo PyMC3 para fazer a inferência 
+utilizando o *log-porobabilidade*, no caso do `logp()`, para ajustar os modelos e 
+o método `random()` é utilizado para fazer a amostragem da *posteriori*.
 
+Suas assinaturas são as seguintes:
 
-ON 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
+``` python3
+x.randon(point=None, size=None)
 
-[Link to another page](./another-page.html).
-[Reinforcement Learning](./rl/introduction.html).
-[Contruindo um computador](./n2t/introduction.html).
-
-There should be whitespace between paragraphs.
-
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
-
-# Header 1
-
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
-
-## Header 2
-
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
-
-### Header 3
-
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
+x.logp(value)
 ```
 
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
+
+## Utilizando uma distribuição sem um modelo
+Os modelos que construímos nos tópicos anteriores estavam sendo definidos dentro de um contexto
+chamado `Model`.
+Caso utilizarmos uma função de probabilidade fora de um contexto, será lançado um erro:
+
+``` python3
+TypeError: No context on context stack
 ```
 
-#### Header 4
+Isso ocorre por que todas as funções de probabilidade no PyMC3 foram feitas para se 
+trabalhar dentro de um contexto.
+Porém, cada uma `Distribution` tem um método `dist` retorna um objeto de distribuição mais
+simplificado que nos permite trabalhar fora de um contexto.
 
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
+``` python3
+import pymc3 as pm
 
-##### Header 5
+y = pm.Binomial.dist(n=30, p=0.4)
 
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
-
-###### Header 6
-
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
-
-### There's a horizontal rule below this.
-
-* * *
-
-### Here is an unordered list:
-
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
-
-### And an ordered list:
-
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
-### Small image
-
-![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
-
-### Large image
-
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
-
-
-### Definition lists can be used with HTML syntax.
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
+y.logp(4).eval()
+y.random(size=5)
 ```
 
+Resultados:
+
+```console
+array(-6.72814841)
+array([14, 15, 10, 11, 15])
 ```
-The final element.
+
+##  Transformação automatizada do PyMC3
+Para conseguir uma amostragem eficiente do MCMC, quaisquer variáveis 
+contínuas que são restritas em sub-intervalo real ($\R$) são transformadas 
+automaticamente para que seu suporte seja irrestrito, ou seja: 
+
+
+Definição de suporte:
+$$ f: \X \rightarrow \Y  $$
+$$ supp(f) = {x \in \X: f(x) <> 0} $$
+
+
+Essa transformação permite os algoritmos de amostragem trabalhar sem se 
+preocupar com as restrições de limite.
+
+Por exemplo, a distribuição gama é de valor positivo. Se definirmos um para um modelo:
+``` python3
+with pm.Model() as model:
+    g = pm.Gamma('g', 1, 1)
+
+model.vars
+model.deterministics
 ```
+
+``` console
+[g_log__]
+[g]
+```
+
+## Escrevendo uma função de probabilidade personalizada
