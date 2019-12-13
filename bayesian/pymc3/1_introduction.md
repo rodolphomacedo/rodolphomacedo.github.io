@@ -1,21 +1,21 @@
 ---
 layout: default
 ---
-# PyMC3
+# Modelagem Bayesiana com PyMC3
 
 > O PyMC3 permite que você escreva modelos usando uma sintaxe intuitiva para 
 descrever um processo de geração de dados.
 
 ## Instalação(via pip)
-``` console
-name@host: ~$ pip3 install pymc3
+```console
+pip3 install pymc3
 ```
 
 ## Distribuições de Probabilidades no PyMC3
 Para descrever uma função densidade de probabilidade no PyMC3 é simples,
 como exemplo, a distribuição normal padrão é definida da seguinte forma:
 
-``` python3
+```python
 import pymc3 as pm
 
 with pm.Model():
@@ -33,7 +33,7 @@ temos `mu` e `sigma`.
 O exemplo anterior mostrou como criar uma variável aleatória escalar. Para criar uma 
 variável aleatória vetorial precisamos definir a sua forma (`shape`):
 
-```python3
+```python
 with pm.Model():
     y = pm.Beta('p', 1, 1, shape=(3, 3))
 ``` 
@@ -56,7 +56,7 @@ o método `random()` é utilizado para fazer a amostragem da *posteriori*.
 
 Suas assinaturas são as seguintes:
 
-``` python3
+```python
 x.randon(point=None, size=None)
 
 x.logp(value)
@@ -68,7 +68,7 @@ Os modelos que construímos nos tópicos anteriores estavam sendo definidos dent
 chamado `Model`.
 Caso utilizarmos uma função de probabilidade fora de um contexto, será lançado um erro:
 
-``` python3
+```python
 TypeError: No context on context stack
 ```
 
@@ -77,7 +77,7 @@ trabalhar dentro de um contexto.
 Porém, cada uma `Distribution` tem um método `dist` retorna um objeto de distribuição mais
 simplificado que nos permite trabalhar fora de um contexto.
 
-``` python3
+```python
 import pymc3 as pm
 
 y = pm.Binomial.dist(n=30, p=0.4)
@@ -108,7 +108,7 @@ Essa transformação permite os algoritmos de amostragem trabalhar sem se
 preocupar com as restrições de limite.
 
 Por exemplo, a distribuição gama é de valor positivo. Se definirmos um para um modelo:
-``` python3
+```python
 with pm.Model() as model:
     g = pm.Gamma('g', 1, 1)
 
@@ -116,9 +116,8 @@ model.vars
 model.deterministics
 ```
 
-``` console
+```console
 [g_log__]
 [g]
 ```
 
-## Escrevendo uma função de probabilidade personalizada
