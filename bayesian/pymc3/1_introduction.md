@@ -29,7 +29,7 @@ método da classe `Normal`.
 
 A variável requer ao menos um `name` como argumento de sua assinatura, 
 e cada função de probabilidade tem seus devidos parâmetros próprios,
-como no caso da Normal temos os parâmetros `mu ($\mu$)` e `sigma ($\sigma$)`.
+como no caso da Normal temos os parâmetros `mu ($$\mu$$)` e `sigma ($$\sigma$$)`.
 
 No quadro anterior criamos uma variável aleatória escalar. Para criarmos uma 
 variável aleatória vetorial precisamos definir a sua *forma* (`shape`):
@@ -41,7 +41,7 @@ with pm.Model():
 
 Acima acabamos de descrever 
 $$ 
-y \approx Beta(1,1) , y \in \R^{3} 
+y \approx Beta(1,1) , y \in R^{3} 
 $$
 
 No PyMC3 todas as distribuições de probabilidades são subclasses da Classe `Distribuition`, 
@@ -100,7 +100,7 @@ array([14, 15, 10, 11, 15])
 
 ##  Transformação automatizada do PyMC3
 Para conseguir uma amostragem eficiente do MCMC, quaisquer variáveis 
-contínuas que são restritas em sub-intervalo real $({\displaystyle \mathbb {R} } \mathbb{R}) $ 
+contínuas que são restritas em sub-intervalo real $$({\displaystyle \mathbb {R} } \mathbb{R})$$ 
 são transformadas automaticamente para que seu suporte seja irrestrito. 
 
 
@@ -132,7 +132,7 @@ Resultados:
 [g_log__]
 [g]
 ```
-Como o nome sugere, a variável `g` foi transformada em $log(g) $, 
+Como o nome sugere, a variável `g` foi transformada em $$log(g) $$, 
 e este é o espaço sobre o qual a amostragem ocorre.
 
 Por padrão, as variáveis transformadas automaticamente são ignoradas 
