@@ -8,7 +8,7 @@ descrever um processo de geração de dados.
 
 ## Instalação(via pip)
 ``` console
-foo@bar: ~$ pip3 install pymc3
+name@host: ~$ pip3 install pymc3
 ```
 
 ## Distribuições de Probabilidades no PyMC3
