@@ -62,7 +62,8 @@ As assinaturas das funções são:
 
 ```python
 x.randon(point=None, size=None)
-
+```
+```
 x.logp(value)
 ```
 
@@ -99,9 +100,8 @@ array([14, 15, 10, 11, 15])
 
 ##  Transformação automatizada do PyMC3
 Para conseguir uma amostragem eficiente do MCMC, quaisquer variáveis 
-contínuas que são restritas em sub-intervalo real ({\displaystyle \mathbb {R} } \mathbb{R}) 
-são transformadas 
-automaticamente para que seu suporte seja irrestrito. 
+contínuas que são restritas em sub-intervalo real $({\displaystyle \mathbb {R} } \mathbb{R}) $ 
+são transformadas automaticamente para que seu suporte seja irrestrito. 
 
 
 Definição de suporte:
@@ -111,7 +111,7 @@ f: X \rightarrow Y
 $$
 
 $$
-supp(f) = \{x \in X: f(x) \neq 0\}
+supp(f) := \{x \in X: f(x) \neq 0\}
 $$
 
 
@@ -132,11 +132,11 @@ Resultados:
 [g_log__]
 [g]
 ```
-Como o nome sugere, a variável `g` foi transformada em $ log(g) $, 
+Como o nome sugere, a variável `g` foi transformada em $log(g) $, 
 e este é o espaço sobre o qual a amostragem ocorre.
 
 Por padrão, as variáveis transformadas automaticamente são ignoradas 
 ao imprimir e plotar a saída do modelo.
 
-*Referencias:* [Documentação](https://docs.pymc.io/Probability\_Distributions.html)
+*Referências:* [Documentação](https://docs.pymc.io/Probability_Distributions.html)
 
