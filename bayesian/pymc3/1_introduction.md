@@ -40,9 +40,9 @@ with pm.Model():
 ``` 
 
 Acima acabamos de descrever 
-$ 
+$$ 
 y \approx Beta(1,1) , y \in \R^{3} 
-$.
+$$
 
 No PyMC3 todas as distribuições de probabilidades são subclasses da Classe `Distribuition`, 
 o qual por sua vez tem duas subclasses `Discrete` e `Continuous`, que são
@@ -99,7 +99,8 @@ array([14, 15, 10, 11, 15])
 
 ##  Transformação automatizada do PyMC3
 Para conseguir uma amostragem eficiente do MCMC, quaisquer variáveis 
-contínuas que são restritas em sub-intervalo real ($\mathbb{R}$) são transformadas 
+contínuas que são restritas em sub-intervalo real ({\displaystyle \mathbb {R} } \mathbb{R}) 
+são transformadas 
 automaticamente para que seu suporte seja irrestrito. 
 
 
@@ -136,4 +137,6 @@ e este é o espaço sobre o qual a amostragem ocorre.
 
 Por padrão, as variáveis transformadas automaticamente são ignoradas 
 ao imprimir e plotar a saída do modelo.
+
+*Referencias:* [Documentação](https://docs.pymc.io/Probability\_Distributions.html)
 
