@@ -110,7 +110,7 @@ f: X \rightarrow Y
 $$
 
 $$
-supp(f) = {x \in \X: f(x) <> 0}
+supp(f) = \{x \in X: f(x) \neq 0\}
 $$
 
 
