@@ -2,10 +2,9 @@
 layout: default
 ---
 
-## Welcome to another page
+## Aprendizado por Reforço 
 
-_yay_
-you can use an inline formula $$\forall x \in R$$ like this one
+*Ainda em construção...*
 
 $$
 M = \left( \begin{array}{ccc}
