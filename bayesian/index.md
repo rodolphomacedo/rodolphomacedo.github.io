@@ -7,15 +7,16 @@ A estatística bayesiana é uma teoria no campo da *estatística* baseada na int
 A probabilidade expressa um certo grau de **crença em um evento**. Esse grau de crença pode ser baseado em conhecimentos prévios
 (utilizando a *priori*) sobre o evento, como resultados de experiências anteriores ou em crenças pessoais sobre o evento.
 
+
 ## Teorema de Bayes
 O teorema de Bayes é um teorema fundamental na estatística bayesiana, pois é usado pelos métodos bayesianos para atualizar 
 probabilidades, que são graus de crença, após a **obtenção de novos dados**. 
 
-Dados dois eventos $${\displaystyle A}$$ UMA e $${\displaystyle B}$$, a probabilidade condicional de $${\displaystyle A}$$
-dado que $${\displaystyle B}$$ é *true* é expresso da seguinte forma:
+Dados dois eventos $${\displaystyle A}$$ e $${\displaystyle B}$$, a probabilidade condicional de $${\displaystyle A}$$
+dado que $${\displaystyle B}$$ é *ocorreu* é expresso da seguinte forma:
 
 $$
-\mathbb{P}{A | B} = \frac{\mathbb{P}{B | A} \mathbb{P}{A} }{\mathbb{P}{B}}
+\mathbb{P}\{A | B\} = \frac{\mathbb{P}\{B | A\} \mathbb{P}\{A\} }{\mathbb{P}\{B\}}
 $$
 
 
