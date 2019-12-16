@@ -13,7 +13,7 @@ O teorema de Bayes é um teorema fundamental na estatística bayesiana, pois é 
 probabilidades, que são graus de crença, após a **obtenção de novos dados**. 
 
 Dados dois eventos $${\displaystyle A}$$ e $${\displaystyle B}$$, a probabilidade condicional de $${\displaystyle A}$$
-dado que $${\displaystyle B}$$ é *ocorreu* é expresso da seguinte forma:
+dado que $${\displaystyle B}$$ *ocorreu* é expresso da seguinte forma:
 
 $$
 \mathbb{P}\{A | B\} = \frac{\mathbb{P}\{B | A\} \mathbb{P}\{A\} }{\mathbb{P}\{B\}}
