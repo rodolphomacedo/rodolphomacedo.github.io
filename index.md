@@ -23,4 +23,4 @@ e aprendizado não supervisionado .
 # Como um computador Funciona - *por dentro de um 16-bits moderno*
 Criação e a implementação de um computador moderno de 16-bits, utilizando apenas a porta lógica **NAND** (*NOT AND*).
  
-[Contruindo um computador](./n2t/index.html).
+[Contruíndo um computador](./n2t/index.html).
