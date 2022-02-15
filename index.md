@@ -6,7 +6,7 @@ layout: default
 A probabilidade expressa um certo grau de **crença em um evento**. Esse grau de crença pode ser baseado em conhecimentos prévios
 (utilizando a *priori*) sobre o evento, como resultados de experiências anteriores ou em crenças pessoais sobre o evento.
 
-[Estatistica Bayesiana](./statistical_rethinking_pt_BR/intro.html)
+[Estatistica Bayesiana](./statistical_rethinking_pt_BR/capa.html)
 
 
 # Como um computador Funciona - *por dentro de um 16-bits moderno*
